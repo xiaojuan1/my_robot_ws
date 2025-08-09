@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<sdf version="1.11">
+  <model name="woodenblock">
+    <static>false</static>
+    <pose>0 0 0 0 0 0</pose>
+    <link name="box">
+      <inertial>
+        <auto>true</auto>
+        <density>3000</density>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.05 0.05 0.05</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <kp>50000</kp> <!-- 刚度 stiffness -->
+              <kd>15.0</kd> <!-- 阻尼 damping -->
+            </ode>
+          </contact>
+          <bounce>
+            <restitution_coefficient>0.5</restitution_coefficient> <!-- 恢复系数 (0~1) -->
+            <threshold>0.01</threshold> <!-- 最小触发速度 (m/s) -->
+          </bounce>
+          <friction>
+            <ode>
+              <mu>30</mu>
+              <mu2>30</mu2>
+            </ode>
+          </friction>
+          <torsional>
+            <ode>
+              <coefficient>10.0</coefficient> <!-- 抗旋转摩擦系数 -->
+            </ode>
+          </torsional>
+        </surface>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>0.05 0.05 0.05</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>1 0 1 1</ambient>
+          <diffuse>1 0 1 1</diffuse>
+          <specular>1 0 1 1</specular>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>
